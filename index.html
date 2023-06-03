@@ -1,0 +1,99 @@
+<!Doctype html>
+<html  lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http -equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+  <header><h1>Geeks for Geeks survey form</h1></header>
+  <div class="container">
+    
+    <form>
+      <div>
+      <label for="name">Name:</label>
+      <br>
+      <input class = "InputText" type="text" id="name" name="name" placeholder="Enter your name">
+      <br>
+      <label for="email">Email:</label>
+      <br>
+      <input class = "InputText" type="email" id="email" name="email" placeholder="Enter your email">
+      <br>
+      <label for="age">Age:</label>
+      <br>
+      <input class = "InputText" type="number" id="age" name="age" placeholder="Enter your age">
+      <br>
+      <label for="options" class="TopMargin">Which best option describes you?</label>
+      <br>
+      </div>
+      <select class = "select" name="options" id="options">
+        <option student="volvo">student</option>
+        <option worker="saab">worker</option>
+      </select> 
+      <br>
+      <label for="OptionsRadio" class="TopMargin">  Would you recommend Geek for geeks to a friend</label>
+      <br>
+      <label><input type="radio" id="yes" name="yes" value="yes">yes</label>
+      <br>
+      <label><input type="radio" id="no" name="no" value="no">no</label>
+      <br>
+      <label><input type="radio" id="Maybe" name="Maybe" value="Maybe">maybe</label>
+      <br>
+
+      <label  for="Chexboxes" class="TopMargin">Language and Frameworks known</label>
+      <br>
+      <label><input type="checkbox" id="C" value="C"> C</label>
+      <br>
+      <label><input type="checkbox" id="C++" value="C++"> C++</label>
+      <br>
+      <label><input type="checkbox" id="C#" value="C#"> C#</label>
+      <br>
+      <label><input type="checkbox" id="Java" value="Java"> Java</label>
+      <br>
+      <label><input type="checkbox" id="Python" value="Python"> Python</label>
+      <br>
+      <label><input type="checkbox" id="Javascript" value="Javascript"> Javascript</label>
+      <br>
+      <label><input type="checkbox" id="React" value="React"> React</label>
+      <br>
+      <label><input type="checkbox" id="Angular" value="Angular"> Angular</label>
+      <br>
+      <label><input type="checkbox" id="Django" value="Django"> Django</label>
+      <br>
+      <label><input type="checkbox" id="Spring" value="Spring"> Spring</label>
+      <br>
+      <label  for="Comments" class="TopMargin">Any Comments or suggestions?</label>
+      <br>
+      <textarea  id="Comments" name="Comments" rows="3" cols="80"></textarea>
+      <br>
+      <input class="submit" type="submit" value="Submit" onclick="printFormData()">
+    </form>
+  </div>
+</body>
+<script>
+  function printFormData() {
+    event.preventDefault();
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var age = document.getElementById("age").value;
+    var options = document.getElementById("options").value;
+    var recommended = document.querySelector('input[name="yes"]:checked') ? "yes" : (document.querySelector('input[name="no"]:checked') ? "no" : "maybe");
+    var languagesKnown = [];
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    checkboxes.forEach(function(checkbox) {
+      languagesKnown.push(checkbox.value);
+    });
+    var comments = document.getElementById("Comments").value;
+
+    console.log("Name: " + name);
+    console.log("Email: " + email);
+    console.log("Age: " + age);
+    console.log("Which best option describes you?: " + options);
+    console.log("Would you recommend Geek for Geeks to a friend?: " + recommended);
+    console.log("Languages and Frameworks known: " + languagesKnown.join(", "));
+    console.log("Comments or suggestions: " + comments);
+  }
+</script>
+</html>
